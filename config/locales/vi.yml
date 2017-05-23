@@ -1,8 +1,47 @@
 vi:
+  title: "TLA"
   hello: "Xin chào"
 
-  home_page: "Trang chủ"
-  home_page_content: "Đây là trang chủ."
+  frontend:
+    company: "ATMARKCAFE"
+    new_log: "Tạo giao dich"
+    sign_up: "Đăng ký"
+    sign_in: "Đăng nhập"
+    home_page: "Trang chủ"
+    search: "Tìm kiếm"
+    app_name: "TRADE LOG APP"
+    design_by: "Thiết kế bởi"
+    team: "BACHPX"
 
-  about_page: "Giới thiệu"
-  about_page: "Đây là trang giới thiệu"
+  home:
+    favorite_recipes: "Món ăn được xem nhiều nhất"
+    read_more: "Xem thêm"
+    previous: "Trước"
+    next: "Sau"
+    guide: "Hướng dẫn"
+
+  about:
+    page_name: "Giới thiệu"
+    page_content: "Đây là trang giới thiệu"
+
+  log:
+    title: "Lich su giao dich"
+    table: 
+      index: "STT"
+      name: "Ten"
+      address: "Dia diem"
+      money: "So tien"
+      datetime: "Thoi gian"
+      status: "Trang thai"
+    log_status: 
+      unsuccess: "That bai"
+      success: "Thanh cong"
+    create: "Them moi"
+    edit: "Sua"
+    remove: "Xoa"
+    destoy_confirm: "Ban chac chu"
+    modal:
+      create: "Tao giao dich"
+
+  errors:
+    log_not_found: "Khong tim thay giao dich"

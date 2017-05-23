@@ -2,26 +2,42 @@
   <div class="modal-content">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-      <h4 class="modal-title"><%= t "log.modal.create" %></h4>
+      <h4 class="modal-title heading">
+        <strong><%= t "log.modal.create" %></strong><span></span>
+      </h4>
     </div>
-    <div class="modal-body">
-    <div class="form_main">
-      <h4 class="heading"><strong>Quick </strong> Contact <span></span></h4>
-       <div class="row">
-          <div class="form">
-            <form action="contact_send_mail.php" method="post" id="contactFrm" name="contactFrm">
-              <input type="text" required="" placeholder="Please input your Name" value="" name="name" class="txt">
-              <input type="text" required="" placeholder="Please input your mobile No" value="" name="mob" class="txt">
-              <input type="text" required="" placeholder="Please input your Email" value="" name="email" class="txt">
-                
-              <textarea placeholder="Your Message" name="mess" type="text" class="txt_3"></textarea>
-              <input type="submit" value="submit" name="submit" class="txt2">
-            </form>
-          </div>
+    <%= form_for log, remote: true do |f| %>
+      <div class="modal-body">
+        <div class="form-group">
+          <%= f.label :name, "Ten" %>
+          <%= f.text_field :name, class: "form-control",
+            placeholder: "Please input your Name" %>
         </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    </div>
+        <div class="form-group">
+          <%= f.label :adress, "Dia chi" %>
+          <%= f.text_area :adress, class: "form-control",
+            placeholder: "Please input your adress" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :money, "So tien" %>
+          <%= f.number_field :money, class: "form-control",
+            placeholder: "Please input money" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :money, "Thoi gian" %>
+          <%= f.datetime_select :datetime %>
+        </div>
+        <div class="form-group">
+          <%= f.radio_button :status, :unsuccess, :checked => true %>
+          <%= f.label :status, :unsuccess.to_sym %>
+          <%= f.radio_button :status, :success %>
+          <%= f.label :status, :success.to_sym %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit "Gui", class: "btn btn-default" %>
+      </div>
+    <% end %>
   </div>
 </div>
+

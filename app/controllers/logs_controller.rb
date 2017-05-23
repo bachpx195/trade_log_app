@@ -1,18 +1,28 @@
 class LogsController < ApplicationController
   before_action :find_log, except: [:index, :new, :create]
-  before_action :list_logs, only: [:index, :destroy]
+  before_action :list_logs, only: [:index, :destroy, :create]
 
   def index
+    @logs = Log.all
+    @logs_count = @logs.size
   end
 
   def new
-    @log =Log.new
+    @log = Log.new
     respond_to do |format|
       format.js {render layout: false}
     end
   end
 
   def create
+    @log = Log.new log_params
+    if @log.save
+      @logs = Log.all
+      @logs_count = @logs.size
+      respond_to do |format|
+        format.js {render layout: false}
+      end
+    end
   end
 
   def update
@@ -23,6 +33,8 @@ class LogsController < ApplicationController
 
   def destroy
     @log.destroy
+    @logs = Log.all
+    @logs_count = @logs.size
     respond_to do |format|
       format.html {redirect_to logs_path, notice: t("log.destroy")}
       format.js {render layout: false}
@@ -34,7 +46,7 @@ class LogsController < ApplicationController
 
   private
   def log_params
-    # params.require(:log).permit :name. :adress, :money, :status
+    params.require(:log).permit :name, :adress, :money, :datetime, :status
   end
 
   def find_log
@@ -46,8 +58,6 @@ class LogsController < ApplicationController
   end
 
   def list_logs
-    @logs = Log.all
-    @logs_count = @logs.size
     @title = t "log.title"
   end
 end

@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   resources :logs
 
   get "/pages/*page", to: "pages#show"
-  root "logs#index"
+  root "pages#show", page: "home"
  end
 end

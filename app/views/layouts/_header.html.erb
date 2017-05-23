@@ -20,7 +20,7 @@
       </form>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to do %>
+      <li><%= link_to new_log_path, remote: true do %>
         <span class="glyphicon glyphicon-upload"></span>
           <%= t "frontend.new_log" %>
         <% end %>

@@ -19,10 +19,10 @@ gem "rails-i18n", "~> 5.0.0"
 gem "bootstrap-sass"
 
 group :development, :test do
-  gem 'byebug', platform: :mri
 end
 
 group :development do
+  gem 'byebug', '~> 9.0', '>= 9.0.5'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
@@ -30,3 +30,4 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+	

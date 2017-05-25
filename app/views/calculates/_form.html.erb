@@ -3,17 +3,17 @@
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
       <h4 class="modal-title heading">
-        <strong>Khoan giao dich</strong><span></span>
+        <strong>Tìm kiếm giao dịch</strong><span></span>
       </h4>
     </div>
     <div class="modal-body">
       <ul class="nav nav-tabs">
         <li class="active">
-          <a  href="#1" data-toggle="tab">Theo ngay</a>
+          <a  href="#1" data-toggle="tab">Theo ngày</a>
         </li>
-        <li><a href="#2" data-toggle="tab">Theo thang</a>
+        <li><a href="#2" data-toggle="tab">Theo tháng</a>
         </li>
-        <li><a href="#3" data-toggle="tab">Theo khoang thoi gian</a>
+        <li><a href="#3" data-toggle="tab">Theo thời gian</a>
         </li>
       </ul>
 
@@ -22,7 +22,7 @@
           <%= form_tag calculates_path, method: :post, remote: :true do %>
             <%= select_date Date.current, start_year: 2009, end_year: Date.current.year %>
             <%= hidden_field_tag "type_of_calculate", "date" %>
-            <div><%= submit_tag 'Tinh' %></div>
+            <div><%= submit_tag 'Tìm kiếm' %></div>
           <% end %>
           <div id='log-table-date'>
           </div>
@@ -31,7 +31,7 @@
           <%= form_tag calculates_path, method: :post, remote: :true do %>
             <%= select_date Date.current, order: [:month, :year], start_year: 2009, end_year: Date.current.year %>
             <%= hidden_field_tag "type_of_calculate", "month" %>
-            <div><%= submit_tag 'Tinh' %></div>
+            <div><%= submit_tag 'Tìm kiếm' %></div>
           <% end %>
           <div id='log-table-month'></div>
         </div>
@@ -41,7 +41,7 @@
             <p>Den</p>
             <%= select_date Date.new, prefix: "end_date", start_year: 2009, end_year: Date.current.year %>
             <%= hidden_field_tag "type_of_calculate", "period" %>
-            <div><%= submit_tag 'Tinh' %></div>
+            <div><%= submit_tag 'Tìm kiếm' %></div>
           <% end %>
           <div id='log-table-period'></div>
         </div>

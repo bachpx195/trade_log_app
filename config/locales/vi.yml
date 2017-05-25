@@ -25,23 +25,23 @@ vi:
     page_content: "Đây là trang giới thiệu"
 
   log:
-    title: "Lich su giao dich"
-    table: 
+    title: "Lịch sử giao dịch"
+    table:
       index: "STT"
-      name: "Ten"
-      address: "Dia diem"
-      money: "So tien"
-      datetime: "Thoi gian"
-      status: "Trang thai"
-    log_status: 
-      unsuccess: "That bai"
-      success: "Thanh cong"
-    create: "Them moi"
-    edit: "Sua"
-    remove: "Xoa"
-    destoy_confirm: "Ban chac chu"
+      name: "Tên"
+      address: "Địa chỉ"
+      money: "Số tiền"
+      datetime: "Thời gian"
+      status: "Trạng thái"
+    log_status:
+      unsuccess: "Thất bại"
+      success: "Thành công"
+    create: "Thêm mới"
+    edit: "Sửa"
+    remove: "Xóa"
+    destoy_confirm: "Bạn chắc chứ"
     modal:
-      create: "Tao giao dich"
+      create: "Tạo giao dịch"
 
   errors:
-    log_not_found: "Khong tim thay giao dich"
+    log_not_found: "Không tìm thấy giao dịch"

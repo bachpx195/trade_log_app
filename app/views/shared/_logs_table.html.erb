@@ -1,36 +1,43 @@
+<div class="table-scrollable">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+      <th></th>
+      <th class="text-center"><%= t "log.table.index" %></th>
+      <th class="text-center"><%= t "log.table.name" %></th>
+      <th class="text-center"><%= t "log.table.address" %></th>
+      <th class="text-center"><%= t "log.table.money" %></th>
+      <th class="text-center"><%= t "log.table.datetime" %></th>
+      <th class="text-center"><%= t "log.table.status" %></th>
+      <th></th>
+    </tr>
+    </thead>
+
+    <tbody class="item-container">
+      <% logs.each_with_index do |f,index| %>
+        <tr>
+          <td class="text-center">
+          <a class="btn btn-circle btn-icon-only btn-default popovers" data-remote="true" href="<%= edit_log_path(f) %>" data-container="body" data-trigger="hover" data-placement="top" data-content="Edit"><i class="icon-pencil"></i></a>
+          </td>
+          <td class="text-center"><%= index + 1  %></td>
+          <td class="text-center"><%= f.name %></td>
+          <td class="text-center"><%= f.adress %></td>
+          <td class="text-center"><%= format_money f.money.to_i %></td>
+          <td class="text-center"><%= format_date_ddMMyyyHHmm f.datetime %></td>
+          <td class="text-center"><%= t "log.log_status.#{f.status}" %></td>
+          <td class="text-center">
+            <%= link_to raw('<i class="fa fa-trash-o"></i>'), f, method: :delete, data: {confirm: t("log.destoy_confirm")}, remote: :true, class: "btn red btn-circle btn-icon-only btn-default" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <div class="row">
-  <div class="col-lg-12">
-    <table class="table table-bordered table-striped table-responsive">
-      <thead>
-      <tr>
-        <th class="text-center"><%= t "log.table.index" %></th>
-        <th class="text-center"><%= t "log.table.name" %></th>
-        <th class="text-center"><%= t "log.table.address" %></th>
-        <th class="text-center"><%= t "log.table.money" %></th>
-        <th class="text-center"><%= t "log.table.datetime" %></th>
-        <th class="text-center"><%= t "log.table.status" %></th>
-        <th></th>
-      </tr>
-      </thead>
-      <tbody>
-        <% logs.each_with_index do |f,index| %>
-          <tr>
-            <td class="text-center"><%= index + 1  %></td>
-            <td class="text-center"><%= link_to  f.name, [f] %></td>
-            <td class="text-center"><%= f.adress %></td>
-            <td class="text-center"><%= f.money %></td>
-            <td class="text-center"><%= f.datetime %></td>
-            <td class="text-center"><%= t "log.log_status.#{f.status}" %></td>
-            <td>
-              <%= link_to t("log.edit"), edit_log_path(f) %>
-              &nbsp &nbsp &nbsp
-              <%= link_to t("log.remove"), f, method: :delete,
-                data: {confirm: t("log.destoy_confirm")},
-                remote: :true, class: "destroy-recipe"%>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="col-md-6">
+    <%= will_paginate logs %>
+  </div>
+  <div class="col-md-6 margin-top-8 text-right">
+    <%= page_entries_info logs %>
   </div>
 </div>

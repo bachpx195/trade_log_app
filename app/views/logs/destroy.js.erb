@@ -1,1 +1,1 @@
-$('.ajax-node').html('<%= j render file: "logs/index" %>');
+$('.ajax-node').html('<%= j render "shared/logs_table", logs: @logs %>');

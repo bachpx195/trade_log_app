@@ -1,16 +1,26 @@
 <div class="row">
-  <div class="col-lg-12">
-    <div class="panel panel-info">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= @title %>( <%= @logs_count %> )</h3>
+  <div class="col-md-12">
+    <div class="portlet light portlet-fit portlet-datatable bordered">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-settings font-green"></i>
+          <span class="caption-subject font-green sbold uppercase"><%= @title %></span>
+        </div>
+
         <div class="actions">
           <div class="btn-group btn-group-devided" data-toggle="buttons">
-            <%= link_to "Tong thu", calculates_path, remote: true,
-              class: "pull-right" %>
+            <%= link_to new_log_path, class: "btn green btn-outline btn-circle", remote: :true do %>
+              <i class="fa fa-plus"></i>
+              Them
+            <% end %>
+            <%= link_to calculates_path, class: "btn green btn-outline btn-circle", remote: :true do %>
+              <i class="fa fa-search"></i>
+              Hoa don
+            <% end %>
           </div>
         </div>
       </div>
-      <div class="panel-body" id="table" >
+      <div class="portlet-body ajax-node">
         <%= render "shared/logs_table", logs: @logs %>
       </div>
     </div>

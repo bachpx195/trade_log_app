@@ -3,8 +3,7 @@ class LogsController < ApplicationController
   before_action :list_logs, only: [:index, :destroy, :create]
 
   def index
-    @logs = Log.all
-    @logs_count = @logs.size
+    @logs = Log.paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
@@ -17,8 +16,7 @@ class LogsController < ApplicationController
   def create
     @log = Log.new log_params
     if @log.save
-      @logs = Log.all
-      @logs_count = @logs.size
+      @logs = Log.paginate(:page => params[:page], :per_page => 10)
       respond_to do |format|
         format.js {render layout: false}
       end
@@ -26,15 +24,22 @@ class LogsController < ApplicationController
   end
 
   def update
+    @log.update_attributes log_params
+    @logs = Log.paginate(:page => params[:page], :per_page => 10)
+    respond_to do |format|
+      format.js {render layout: false}
+    end
   end
 
   def edit
+    respond_to do |format|
+      format.js {render layout: false}
+    end
   end
 
   def destroy
     @log.destroy
-    @logs = Log.all
-    @logs_count = @logs.size
+    @logs = Log.paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.html {redirect_to logs_path, notice: t("log.destroy")}
       format.js {render layout: false}

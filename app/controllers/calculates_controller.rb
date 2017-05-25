@@ -21,11 +21,11 @@ class CalculatesController < ApplicationController
 	   	@logs = Log.get_logs_by_date date
 	elsif params[:type_of_calculate] == "month"
 		date = set_date(params[:date])
-	   	@logs = Log.get_logs_by_month date.beginning_of_month, date.end_of_month
+	   	@logs = Log.get_logs_by_period date.beginning_of_month, date.end_of_month
 	else
 	   	start_date = set_date(params[:start_date])
   		end_date = set_date(params[:end_date])
-  		@logs = Log.get_logs_by_month start_date, end_date
+  		@logs = Log.get_logs_by_period start_date, end_date
 	end
   end
 

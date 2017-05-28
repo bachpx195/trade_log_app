@@ -4,6 +4,10 @@
     <title><%= t "title" %></title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+      <%= stylesheet_link_tag "application", media: "all",
+        "dât-turbolinks-track": "reload" %>
+      <%= javascript_include_tag "application",
+        "dât-turbolinks-track": "reload" %>
       <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
       <link href="/assets/global/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
       <link href="/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
@@ -17,10 +21,6 @@
       <link href="/assets/layouts/layout4/css/layout.min.css" rel="stylesheet" type="text/css" />
       <link href="/assets/layouts/layout4/css/themes/light.min.css" rel="stylesheet" type="text/css" id="style_color" />
       <link href="/assets/layouts/layout4/css/custom.min.css" rel="stylesheet" type="text/css" />
-      <%= stylesheet_link_tag "application", media: "all",
-        "data-turbolinks-track": "reload" %>
-      <%= javascript_include_tag "application",
-        "data-turbolinks-track": "reload" %>
   </head>
   <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md page-sidebar-closed">
     <%= render "layouts/header" %>

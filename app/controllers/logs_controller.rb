@@ -16,7 +16,7 @@ class LogsController < ApplicationController
   def create
     @log = Log.new log_params
     if @log.save
-      @logs = Log.paginate(:page => params[:page], :per_page => 10)
+      @logs = Log.order_desc.paginate(:page => params[:page], :per_page => 10)
       respond_to do |format|
         format.js {render layout: false}
       end
@@ -41,7 +41,6 @@ class LogsController < ApplicationController
     @log.destroy
     @logs = Log.paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
-      format.html {redirect_to logs_path, notice: t("log.destroy")}
       format.js {render layout: false}
     end
   end
@@ -56,10 +55,6 @@ class LogsController < ApplicationController
 
   def find_log
     @log = Log.find_by id: params[:id]
-    unless @log
-      flash[:danger] = t "errors.log_not_found"
-      redirect_to logs_path
-    end
   end
 
   def list_logs

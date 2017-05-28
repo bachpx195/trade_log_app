@@ -1,4 +1,4 @@
-10.times do |n|
+50000.times do |n|
   Log.create!(
     name: "Vũ Hữu Tuấn #{n+1}",
     adress: "So 13, Mao Khe, Dong Trieu, Quang Ninh",
@@ -8,7 +8,7 @@
   )
 end
 
-10.times do |n|
+50000.times do |n|
   Log.create!(
     name: "Vũ Hữu Tuấn #{n+1}",
     adress: "So 13, Mao Khe, Dong Trieu, Quang Ninh",

@@ -7,6 +7,14 @@
       </h4>
     </div>
     <%= form_for log, remote: true do |f| %>
+
+      <% if log.errors.any? %>
+      <ul>
+        <% log.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+      <% end %>
       <div class="modal-body">
         <div class="form-group">
           <%= f.label :name, "Tên" %>

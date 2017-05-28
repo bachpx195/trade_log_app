@@ -19,29 +19,75 @@
 
       <div class="tab-content ">
         <div class="tab-pane active" id="1">
-          <%= form_tag calculates_path, method: :post, remote: :true do %>
-            <%= select_date Date.current, start_year: 2009, end_year: Date.current.year %>
-            <%= hidden_field_tag "type_of_calculate", "date" %>
-            <div><%= submit_tag 'Tìm kiếm' %></div>
+          <%= form_tag calculates_path, method: :post,
+            authenticity_token: :true, remote: :true, class: "form-horizontal", id: "date-form" do %>
+            <div class="form-body">
+              <br>
+              <div class="form-group form-md-line-input">
+                <label class="col-md-2 control-label">Ngày :</label>
+                <div class="col-md-4">
+                  <%= hidden_field_tag "type_of_calculate", "date" %>
+                  <%= text_field_tag :date, format_date_ddMMyyyHHmm(Time.now), class: 'form-control date-picker', id: "date-field" %>
+                  <div class="form-control-focus"></div>
+                </div>
+                <div class="col-md-2">
+                  <%= submit_tag "Tìm kiếm", class: 'btn green' do %>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           <% end %>
           <div id='log-table-date'>
           </div>
         </div>
         <div class="tab-pane" id="2">
-          <%= form_tag calculates_path, method: :post, remote: :true do %>
-            <%= select_date Date.current, order: [:month, :year], start_year: 2009, end_year: Date.current.year %>
-            <%= hidden_field_tag "type_of_calculate", "month" %>
-            <div><%= submit_tag 'Tìm kiếm' %></div>
+          <%= form_tag calculates_path, method: :post, authenticity_token: :true, remote: :true, class: "form-horizontal" do %>
+            <div class="form-body">
+              <br>
+              <div class="form-group form-md-line-input">
+                <label class="col-md-2 control-label">Ngày :</label>
+                <div class="col-md-4">
+                  <%= hidden_field_tag "type_of_calculate", "month" %>
+                  <%= text_field_tag :date, format_date_MMyyy(Time.now), class: 'form-control date-picker-month', id: "date-field" %>
+                  <div class="form-control-focus"></div>
+                </div>
+                <div class="col-md-2">
+                  <%= submit_tag "Tìm kiếm", class: 'btn green' do %>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           <% end %>
           <div id='log-table-month'></div>
         </div>
         <div class="tab-pane" id="3">
-          <%= form_tag calculates_path, method: :post, remote: :true do %>
-            <%= select_date Date.new,  prefix: "start_date", start_year: 2009, end_year: Date.current.year %>
-            <p>Den</p>
-            <%= select_date Date.new, prefix: "end_date", start_year: 2009, end_year: Date.current.year %>
-            <%= hidden_field_tag "type_of_calculate", "period" %>
-            <div><%= submit_tag 'Tìm kiếm' %></div>
+          <%= form_tag calculates_path, method: :post, authenticity_token: :true, remote: :true, class: "form-horizontal" do %>
+
+            <div class="form-body">
+              <br>
+              <div class="form-group form-md-line-input">
+                <%= hidden_field_tag "type_of_calculate", "period" %>
+                <label class="col-md-3 control-label">Ngày bắt đầu :</label>
+                <div class="col-md-2  ">
+                  <%= text_field_tag :start_date, format_date_ddMMyyyHHmm(Time.now), class: 'form-control date-picker', id: "date-field" %>
+                  <div class="form-control-focus"></div>
+                </div>
+                <label class="col-md-3 control-label">Ngày kết thúc :</label>
+                <div class="col-md-2">
+                  <%= text_field_tag :end_date, format_date_ddMMyyyHHmm(Time.now), class: 'form-control date-picker', id: "date-field" %>
+                  <div class="form-control-focus"></div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-md-line-input">
+              <div class="col-md-2">
+                <%= submit_tag "Tìm kiếm", class: 'btn green' do %>
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                <% end %>
+              </div>
+            </div>
           <% end %>
           <div id='log-table-period'></div>
         </div>
@@ -51,3 +97,20 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    if (jQuery().datepicker) {
+      $('.date-picker').datepicker({
+        rtl: App.isRTL(),
+        orientation: "left",
+        autoclose: true
+      });
+      $('.date-picker-month').datepicker({
+        format: "mm/yyyy",
+        viewMode: "months",
+        minViewMode: "months"
+      });
+    }
+  });
+</script>

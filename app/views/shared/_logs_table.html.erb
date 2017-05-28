@@ -23,7 +23,7 @@
           <td class="text-center"><%= f.name %></td>
           <td class="text-center"><%= f.adress %></td>
           <td class="text-center"><%= format_money f.money.to_i %></td>
-          <td class="text-center"><%= format_date_ddMMyyyHHmm f.datetime %></td>
+          <td class="text-center"><%= format_date_ddMMyyyHHmm f.datetime, "%H:%M" %></td>
           <td class="text-center"><%= t "log.log_status.#{f.status}" %></td>
           <td class="text-center">
             <%= link_to raw('<i class="fa fa-trash-o"></i>'), f, method: :delete, data: {confirm: t("log.destoy_confirm")}, remote: :true, class: "btn red btn-circle btn-icon-only btn-default" %>

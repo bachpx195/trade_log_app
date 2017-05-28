@@ -7,9 +7,19 @@ module ApplicationHelper
 		sum
 	end
 
-  def format_date_ddMMyyyHHmm(str)
+  def format_date_ddMMyyyHHmm(str, hour = "")
     if str!=nil
-      str.strftime("%d/%m/%Y %H:%M")
+      date_format = '%d/%m/%Y ' + "#{hour}"
+      str.strftime(date_format)
+    else
+      ''
+    end
+  end
+
+  def format_date_MMyyy str
+    if str!=nil
+      date_format = '%m/%Y'
+      str.strftime(date_format)
     else
       ''
     end

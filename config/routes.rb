@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :calculates
 
   get "/pages/*page", to: "pages#show"
-  root "pages#show", page: "home"
+  root "logs#index"
  end
 end

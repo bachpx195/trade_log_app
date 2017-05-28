@@ -9,27 +9,27 @@
     <%= form_for log, remote: true do |f| %>
       <div class="modal-body">
         <div class="form-group">
-          <%= f.label :name, "Ten" %>
+          <%= f.label :name, "Tên" %>
           <%= f.text_field :name, class: "form-control",
             placeholder: "Please input your Name" %>
         </div>
         <div class="form-group">
-          <%= f.label :adress, "Dia chi" %>
+          <%= f.label :adress, "Địa chỉ" %>
           <%= f.text_area :adress, class: "form-control",
             placeholder: "Please input your adress" %>
         </div>
         <div class="form-group">
-          <%= f.label :money, "So tien" %>
+          <%= f.label :money, "Số tiền" %>
           <%= f.number_field :money, class: "form-control",
             placeholder: "Please input money" %>
         </div>
         <div class="form-group">
-          <%= f.label :money, "Thoi gian" %>
+          <%= f.label :money, "Thời gian" %>
           <%= f.datetime_select :datetime %>
         </div>
         <div class="form-group">
           <%= f.radio_button :status, :unsuccess, :checked => true %>
-          <%= f.label :status, "That bai" %>
+          <%= f.label :status, "Thất bại" %>
           <%= f.radio_button :status, :success %>
           <%= f.label :status, "Thanh cong" %>
         </div>

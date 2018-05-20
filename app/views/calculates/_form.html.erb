@@ -97,20 +97,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  $(document).ready(function(){
-    if (jQuery().datepicker) {
-      $('.date-picker').datepicker({
-        rtl: App.isRTL(),
-        orientation: "left",
-        autoclose: true
-      });
-      $('.date-picker-month').datepicker({
-        format: "mm/yyyy",
-        viewMode: "months",
-        minViewMode: "months"
-      });
-    }
-  });
-</script>

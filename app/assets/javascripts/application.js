@@ -13,18 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
 //= require bootstrap-sprockets
-
-$(document).on('turbolinks:load', function() {
-  $('.date-picker').change(function(){
-    alert("ok");
-  });
-  if (jQuery().datepicker) {
-    $('.date-picker').datepicker({
-      rtl: App.isRTL(),
-      orientation: "left",
-      autoclose: true
-    });
-  }
-});
+//= require_tree .
